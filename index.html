@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Alexa Iulia | Cabinet Stomatologic Arad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0f4c5c;
@@ -41,6 +39,22 @@
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230f4c5c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 18c-5 0-9 3.5-9 8.5 0 3.5 1.3 6.2 2 9.5.5 2.5 1.3 6.5 3.2 6.5s2-3.8 2.8-3.8.9 3.8 2.8 3.8 2.7-4 3.2-6.5c.7-3.3 2-6 2-9.5 0-5-4-8.5-9-8.5z'/%3E%3Cpath d='M110 22l28 28M124 22l14 14M127 19l14 14M130 16l14 14'/%3E%3Ccircle cx='42' cy='122' r='11'/%3E%3Ccircle cx='42' cy='122' r='5'/%3E%3Cpath d='M51 114l16-14'/%3E%3Crect x='115' y='110' width='12' height='32' rx='3' transform='rotate(-25 121 126)'/%3E%3Cpath d='M111 107l8-4'/%3E%3Cpath d='M78 72l4 8 8 4-8 4-4 8-4-8-8-4 8-4z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
     }
 
     a {
@@ -172,7 +186,33 @@
 
     .hero {
       padding: 64px 0 56px;
-      background: linear-gradient(180deg, #eef6f8 0%, var(--bg-main) 100%);
+      background: linear-gradient(180deg, rgba(238, 246, 248, 0.88) 0%, rgba(248, 250, 252, 0.6) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13, 148, 136, 0.11) 0%, transparent 70%);
+      top: -160px;
+      right: -120px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15, 76, 92, 0.08) 0%, transparent 70%);
+      bottom: -140px;
+      left: -100px;
+      pointer-events: none;
     }
 
     .hero-grid {
@@ -180,6 +220,8 @@
       grid-template-columns: 1.25fr 0.75fr;
       gap: 40px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .badge {
@@ -348,14 +390,33 @@
       font-size: 0.98rem;
     }
 
+    .services-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-watermark {
+      position: absolute;
+      right: -30px;
+      top: 30px;
+      width: 340px;
+      height: 340px;
+      opacity: 0.045;
+      color: var(--primary);
+      pointer-events: none;
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .service-card {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 24px;
@@ -369,10 +430,10 @@
     }
 
     .service-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--accent-soft);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-soft), #d9f0ec);
       color: var(--primary);
       display: flex;
       align-items: center;
@@ -392,13 +453,27 @@
     }
 
     .features-strip {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary) 0%, #145c6e 100%);
       color: #ffffff;
       border-radius: 18px;
       padding: 40px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features-strip::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      pointer-events: none;
     }
 
     .feature-item h4 {
@@ -411,7 +486,7 @@
 
     .feature-item p {
       font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.82);
+      color: rgba(255, 255, 255, 0.84);
     }
 
     .reviews-grid {
@@ -698,7 +773,6 @@
     }
 
     @media (max-width: 900px) {
-
       .hero-grid,
       .contact-grid {
         grid-template-columns: 1fr;
@@ -759,18 +833,15 @@
     }
   </style>
 </head>
-
 <body>
+
+  <div class="bg-pattern" aria-hidden="true"></div>
 
   <header id="navbar">
     <div class="container nav-wrapper">
       <a href="#" class="brand">
         <div class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M12 2C8.5 2 6 4.5 6 8c0 2.5 1 4.5 1.5 7 .4 2 1 5 2.5 5s1.5-3 2-3 .5 3 2 3 2.1-3 2.5-5c.5-2.5 1.5-4.5 1.5-7 0-3.5-2.5-6-6-6z" />
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.5 2 6 4.5 6 8c0 2.5 1 4.5 1.5 7 .4 2 1 5 2.5 5s1.5-3 2-3 .5 3 2 3 2.1-3 2.5-5c.5-2.5 1.5-4.5 1.5-7 0-3.5-2.5-6-6-6z"/></svg>
         </div>
         <div>
           Dr. Alexa Iulia
@@ -789,11 +860,7 @@
       <div style="display: flex; align-items: center; gap: 10px;">
         <button class="btn btn-primary desktop-cta" onclick="openModal()">Programare Online</button>
         <button class="menu-toggle" id="menuToggle" aria-label="Meniu">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
@@ -808,23 +875,14 @@
             <span id="liveStatusText">Bulevardul Revoluției 66, Arad</span>
           </div>
           <h1>Stomatologie modernă, fără durere și cu grijă reală față de pacient</h1>
-          <p>În centrul Aradului, Cabinetul Stomatologic Dr. Alexa Iulia oferă tratamente personalizate, tehnologie cu
-            laser dentar și explicații clare la fiecare pas, într-o atmosferă calmă și sigură.</p>
+          <p>În centrul Aradului, Cabinetul Stomatologic Dr. Alexa Iulia oferă tratamente personalizate, tehnologie cu laser dentar și explicații clare la fiecare pas, într-o atmosferă calmă și sigură.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" onclick="openModal()">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               Solicită o programare
             </button>
             <a href="tel:+40753483170" class="btn btn-outline">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               +40 753 483 170
             </a>
           </div>
@@ -850,47 +908,49 @@
 
           <div class="metric-row">
             <div class="metric-label"><span>Profesionalism</span><span>98%</span></div>
-            <div class="progress-bg">
-              <div class="progress-fill" data-width="98%"></div>
-            </div>
+            <div class="progress-bg"><div class="progress-fill" data-width="98%"></div></div>
           </div>
           <div class="metric-row">
             <div class="metric-label"><span>Atenție la detalii</span><span>98%</span></div>
-            <div class="progress-bg">
-              <div class="progress-fill" data-width="98%"></div>
-            </div>
+            <div class="progress-bg"><div class="progress-fill" data-width="98%"></div></div>
           </div>
           <div class="metric-row">
             <div class="metric-label"><span>Implicare & Rezultate</span><span>96%</span></div>
-            <div class="progress-bg">
-              <div class="progress-fill" data-width="96%"></div>
-            </div>
+            <div class="progress-bg"><div class="progress-fill" data-width="96%"></div></div>
           </div>
           <div class="metric-row">
             <div class="metric-label"><span>Încredere & Comunicare</span><span>95%</span></div>
-            <div class="progress-bg">
-              <div class="progress-fill" data-width="95%"></div>
-            </div>
+            <div class="progress-bg"><div class="progress-fill" data-width="95%"></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="servicii">
+    <section id="servicii" class="services-section">
+      <svg class="bg-watermark" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M65 35c-18 0-32 13-32 32 0 14 5 25 8 38 2 10 5 26 13 26s8-15 11-15 3 15 11 15 11-16 13-26c3-13 8-24 8-38 0-19-14-32-32-32z"/>
+        <path d="M115 145l55-55"/>
+        <path d="M148 92l15 15M154 86l15 15M160 80l15 15"/>
+        <circle cx="145" cy="155" r="18"/>
+        <circle cx="145" cy="155" r="8"/>
+        <path d="M132 142l-18-18"/>
+      </svg>
+
       <div class="container">
         <div class="section-header reveal">
           <span class="section-tag">Servicii Stomatologice</span>
           <h2>Îngrijire completă pentru sănătatea și estetica zâmbetului</h2>
-          <p>Fiecare plan de tratament este explicat în detaliu înainte de începere, cu opțiuni corecte și adaptate
-            nevoilor tale.</p>
+          <p>Fiecare plan de tratament este explicat în detaliu înainte de începere, cu opțiuni corecte și adaptate nevoilor tale.</p>
         </div>
 
         <div class="services-grid">
           <div class="service-card reveal">
             <div class="service-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 11l3 3L22 4" />
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="10" r="6"/>
+                <circle cx="10" cy="10" r="2.5"/>
+                <path d="M14.5 14.5L21 21"/>
+                <path d="M3 20l5-5"/>
               </svg>
             </div>
             <h3>Consultații & Plan de Tratament</h3>
@@ -899,8 +959,13 @@
 
           <div class="service-card reveal">
             <div class="service-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21l9-9"/>
+                <path d="M10.5 10.5l3 3"/>
+                <path d="M14 7l3-3"/>
+                <path d="M18 3l3 3"/>
+                <path d="M19 9h3"/>
+                <path d="M15 2v3"/>
               </svg>
             </div>
             <h3>Tratamente cu Laser Dentar</h3>
@@ -909,14 +974,10 @@
 
           <div class="service-card reveal">
             <div class="service-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4C8 4 6 6.2 6 9c0 2.2.8 4 1.3 6.2.4 1.8.9 4.3 2.2 4.3s1.2-2.5 1.5-2.5.2 2.5 1.5 2.5 1.8-2.5 2.2-4.3c.5-2.2 1.3-4 1.3-6.2 0-2.8-2-5-5-5z"/>
+                <path d="M19 3v4M17 5h4"/>
+                <path d="M20 11v2M19 12h2"/>
               </svg>
             </div>
             <h3>Albire & Estetică Dentară</h3>
@@ -925,8 +986,12 @@
 
           <div class="service-card reveal">
             <div class="service-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 19L19 3"/>
+                <path d="M13 5l3 3"/>
+                <path d="M15 3l3 3"/>
+                <path d="M17 1l3 3"/>
+                <path d="M7 10c1.5-1.5 3.5-1.5 5 0"/>
               </svg>
             </div>
             <h3>Igienizare Dentară Completă</h3>
@@ -935,9 +1000,9 @@
 
           <div class="service-card reveal">
             <div class="service-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3C8.5 3 6 5.5 6 9c0 2.5 1 4.5 1.5 7 .4 2 1 5 2.5 5s1.5-3 2-3 .5 3 2 3 2.1-3 2.5-5c.5-2.5 1.5-4.5 1.5-7 0-3.5-2.5-6-6-6z"/>
+                <path d="M9.5 7.5c1.5 1 3.5 1 5 0"/>
               </svg>
             </div>
             <h3>Tratament Carii & Plombe</h3>
@@ -946,9 +1011,9 @@
 
           <div class="service-card reveal">
             <div class="service-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8l4 3 4-5 4 5 4-3-2 9H6L4 8z"/>
+                <path d="M6 20h12"/>
               </svg>
             </div>
             <h3>Coroane & Refacerea Danturii</h3>
@@ -963,8 +1028,7 @@
         <div class="features-strip reveal">
           <div class="feature-item">
             <h4>Empatie și răbdare</h4>
-            <p>Abordare blândă, dedicată în special adulților și familiilor care au avut experiențe neplăcute în trecut.
-            </p>
+            <p>Abordare blândă, dedicată în special adulților și familiilor care au avut experiențe neplăcute în trecut.</p>
           </div>
           <div class="feature-item">
             <h4>Comunicare pas cu pas</h4>
@@ -1034,36 +1098,27 @@
           <div class="faq-item">
             <button class="faq-question">
               Unde este situat Cabinetul Stomatologic Dr. Alexa Iulia din Arad?
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-answer">
-              Cabinetul este situat în Arad, pe Bulevardul Revoluției nr. 66, cod poștal 310025, într-o zonă centrală și
-              ușor accesibilă.
+              Cabinetul este situat în Arad, pe Bulevardul Revoluției nr. 66, cod poștal 310025, într-o zonă centrală și ușor accesibilă.
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">
               Ce servicii oferă Cabinetul Stomatologic Dr. Alexa Iulia?
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-answer">
-              Oferim consultații stomatologice, tratament carii și plombe dentare, igienizare completă (detartraj și
-              periaj profesional), albire dentară, coroane dentare, tratamente cu laser dentar (inclusiv gingivectomie)
-              și aplicare bijuterii dentare.
+              Oferim consultații stomatologice, tratament carii și plombe dentare, igienizare completă (detartraj și periaj profesional), albire dentară, coroane dentare, tratamente cu laser dentar (inclusiv gingivectomie) și aplicare bijuterii dentare.
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">
               Care este programul cabinetului?
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-answer">
               Cabinetul este deschis de Luni până Vineri, între orele 10:00 și 20:00. Sâmbăta și Duminica este închis.
@@ -1073,13 +1128,10 @@
           <div class="faq-item">
             <button class="faq-question">
               Ce facilități sunt disponibile pentru pacienți?
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-answer">
-              Pacienții beneficiază de aparatură modernă cu laser dentar pentru proceduri minim invazive, programări
-              online rapide și acces gratuit la WiFi în sala de așteptare.
+              Pacienții beneficiază de aparatură modernă cu laser dentar pentru proceduri minim invazive, programări online rapide și acces gratuit la WiFi în sala de așteptare.
             </div>
           </div>
         </div>
@@ -1111,10 +1163,7 @@
             <h3>Date de contact</h3>
             <div class="contact-detail">
               <div class="contact-detail-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>
                 <strong>Adresă</strong>
@@ -1124,10 +1173,7 @@
 
             <div class="contact-detail">
               <div class="contact-detail-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
                 <strong>Telefon programări</strong>
@@ -1135,7 +1181,10 @@
               </div>
             </div>
 
-            <iframe class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            <iframe
+              class="map-frame"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
               src="https://www.openstreetmap.org/export/embed.html?bbox=21.3145%2C46.1715%2C21.3225%2C46.1765&layer=mapnik&marker=46.1740%2C21.3185">
             </iframe>
           </div>
@@ -1302,5 +1351,4 @@
     });
   </script>
 </body>
-
 </html>
